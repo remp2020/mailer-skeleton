@@ -47,7 +47,6 @@ final class Bootstrap
         $configurator->addConfig(__DIR__ . '/../vendor/remp/mailer-module/src/config/config.root.neon');
 
         // Rest of configuration
-        $configurator->addConfig(__DIR__ . '/config/config.neon');
         $configurator->addConfig(__DIR__ . '/config/config.local.neon');
 
         return $configurator;
