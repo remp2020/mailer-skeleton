@@ -4666,12 +4666,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/mailer-module.git",
-                "reference": "41cd88a2704509768dcc0ee0cd2c835186b0c3c0"
+                "reference": "ef8efcc95018eae89cebb4aa956ae822daf5971b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/remp2020/mailer-module/zipball/41cd88a2704509768dcc0ee0cd2c835186b0c3c0",
-                "reference": "41cd88a2704509768dcc0ee0cd2c835186b0c3c0",
+                "url": "https://api.github.com/repos/remp2020/mailer-module/zipball/ef8efcc95018eae89cebb4aa956ae822daf5971b",
+                "reference": "ef8efcc95018eae89cebb4aa956ae822daf5971b",
                 "shasum": ""
             },
             "require": {
@@ -4734,9 +4734,9 @@
             "homepage": "https://remp2030.com",
             "support": {
                 "issues": "https://github.com/remp2020/mailer-module/issues",
-                "source": "https://github.com/remp2020/mailer-module/tree/master"
+                "source": "https://github.com/remp2020/mailer-module/tree/0.27.1"
             },
-            "time": "2021-07-08T14:45:52+00:00"
+            "time": "2021-07-09T07:31:27+00:00"
         },
         {
             "name": "remp/remp-commons",

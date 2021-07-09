@@ -13,8 +13,8 @@ The simplest possible way is to run this application in docker containers. Docke
 
 Recommended _(tested)_ versions are:
 
-- [Docker](https://www.docker.com/products/docker-engine) - 18.06.1-ce, build e68fc7a
-- [Docker Compose](https://docs.docker.com/compose/overview/) - 1.17.1, build 6d101fb
+- [Docker](https://www.docker.com/products/docker-engine) - 20.10.5, build 55c4c88
+- [Docker Compose](https://docs.docker.com/compose/overview/) - 1.29.0, build 07737305
 
 #### Steps to install application within docker
 
@@ -59,7 +59,7 @@ Following commands will be run inside container.
 Owner of folders `temp` and `log` is user on host machine. Application needs to have right to write there.
 
 ```
-chmod -R a+rw temp log
+mkdir temp log; chmod -R a+rw temp log
 ```
 
 6. Install composer packages.
@@ -68,56 +68,38 @@ chmod -R a+rw temp log
 composer install
 ```
 
-7. Initialize and migrate database.
+7. Install and build JS packages.
 
 ```
-php bin/command.php phinx:migrate
+make js
 ```
 
-8. Generate user access resources to control access rights to features in CRM admin.
+8. Initialize and migrate database.
 
 ```
-php bin/command.php user:generate_access
+php bin/command.php migrate:migrate
 ```
 
-9. Generate API access resources to control access rights of API tokens to specific endpoints.
+9. Seed database with required data
 
 ```
-php bin/command.php api:generate_access
+php bin/command.php db:seed
 ```
 
-10. Seed database with required data
+10. (Optional) Seed database with demo data
 
 ```
-php bin/command.php application:seed
+php bin/command.php demo:seed
 ```
-
-11. Copy module's assets to your `www` folder. This is part of [composer.json](./composer.json) and it's handled automatically for you in subsequent updates.
-
-```
-php bin/command.php application:install_assets
-```
-
-12. Initialize random application key (`CRM_KEY` value) in your `.env` file.
-
-```
-php bin/command.php application:generate_key
-```
-
-13. All done
 
 Access application via web browser. Default configuration:
 
-- URL: http://crm.press/
-- Users:
-    - Admin
-        - Username: `admin@admin.sk`
-        - Password: `password`
-    - User
-        - Username: `user@user.sk`
-        - Password: `password`
-
-**IMPORTANT:** Please update steps 7-11 every time you update the CRM - every time you run `composer update`.
+- URL: http://mailer.press/
+- User:
+    - Email: `admin@admin.sk`
+    - Password: `passphrase_change_me`
+    
+**IMPORTANT:** Please run steps 6-9 every time you update Mailer using `composer update`.
 
 ### Manual
 
@@ -906,8 +888,25 @@ aggregation, so they're displayed right in the job detail.
 
 ### Authentication
 
-The default implementation authenticates via REMP SSO. However, it is possible for Mailer
-to use external authentication without the need of having SSO installed.
+The default implementation authenticates via REMP SSO.
+
+However, the easiest way to start is to use `SimpleAuthenticator` with predefined list of emails and passwords. It requires no external authentication services.
+
+#### Simple authenticator
+
+To install `SimpleAuthenticator`, please add the following to your `config.local.neon` (`services`  section):
+
+```neon
+services:
+    authenticator:
+        factory: Remp\MailerModule\Models\Auth\SimpleAuthenticator
+        setup:
+            - addUser('admin@admin.sk', 'admin_passphrase')
+```
+Call `addUser()` for every valid email-password combination you want to add.
+
+#### Custom authentication
+It is possible for Mailer to use external authentication without the need of having SSO installed.
 
 To replace REMP SSO with your custom authentication, you need to:
 

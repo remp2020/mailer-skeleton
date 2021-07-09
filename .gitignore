@@ -10,12 +10,14 @@
 
 app/config/config.local.neon
 node_modules
-log/
-temp/
+log/*
+temp/*
 vendor/
 www/assets/
 
 yarn-error.log
 mix-manifest.json
+composer.lock
+yarn.lock
 docker-compose.override.yml
 Thumbs.db

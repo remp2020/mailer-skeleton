@@ -2,6 +2,23 @@ php:
 	intl.default_locale: sk_SK
 
 services:
+    authenticator:
+        factory: Remp\MailerModule\Models\Auth\SimpleAuthenticator
+        setup:
+            - addUser('admin@admin.sk', 'passphrase_change_me')    
+
+    # This is a reference IUser implementation.
+    # You should make your own implementation against your CRM system and register it here.
+    - Remp\MailerModule\Models\Users\Dummy
+
+    # To be able to send an email, you need to provide at least one ISegment implementation
+    # You should make your own implementation against your CRM system and register it here.
+    segmentAgreggator:
+        setup:
+            - register(Remp\MailerModule\Models\Segment\Dummy())
+#           - register(Remp\MailerModule\Models\Segment\Beam(%remp.beam.segments_addr%))
+#           - register(Remp\MailerModule\Models\Segment\Pythia(%remp.pythia.segments_addr%))
+      
     # All console commands you need to use should be registered here
     # This is a set that we recommend to use
     console:
@@ -11,15 +28,10 @@ services:
             # If you're using Beam, you can enable this command to pull conversions from there
             # - add(Remp\MailerModule\Commands\ProcessConversionStatsCommand())
 
-#	# Internal CRM system. For more details contact Tomas Bella.
-#	authenticator:
-#		factory: Remp\MailerModule\Models\Auth\Authenticator
-#	authStorage:
-#		factory: Remp\MailerModule\Models\Auth\RemoteUser(%sso_host%)
-
     embedParser:
         setup:
             - setVideoLinkText("Click to play video")
+
     articleLocker:
         setup:
             - setLockText("Exclusive content")
@@ -32,6 +44,7 @@ services:
 
     # shutdown hermes and mail worker with file (checks modification date; see SharedFileShutdown implementation)
     hermesShutdown: Tomaj\Hermes\Shutdown\SharedFileShutdown('/tmp/hermes_shutdown')
+    
     hermesWorker:
         setup:
             - add('email-dropped', @unsubscribeDroppedHandler)
@@ -48,19 +61,8 @@ services:
             - pushHandler(Monolog\Handler\StreamHandler("%appDir%/../log/hermes.log"))
             - pushHandler(Monolog\Handler\ErrorLogHandler())
 
-    # This is a reference IUser implementation.
-    # You should make your own implementation against your CRM system and register it here.
-    - Remp\MailerModule\Models\Users\Dummy
-
-    # To be able to send an email, you need to provide at least one ISegment implementation
-    # You should make your own implementation against your CRM system and register it here.
-    segmentAgreggator:
-        setup:
-            - register(Remp\MailerModule\Models\Segment\Dummy())
-#            - register(Remp\MailerModule\Models\Segment\Beam(%remp.beam.segments_addr%))
-#            - register(Remp\MailerModule\Models\Segment\Pythia(%remp.pythia.segments_addr%))
-
 #    - Remp\MailerModule\Tracker\Remp(%remp.beam.tracker_addr%, %remp.beam.tracker_property_token%)
+
 #    eventDispatcher:
 #        factory: League\Event\EventDispatcher
 #        setup:
@@ -77,7 +79,6 @@ services:
 
 # local_configs override DBs configs records.
 local_configs:
-
     # Configuring usage of mailhog for local development
     remp_smtp_host: mailhog
     remp_smtp_host_port: 1025
@@ -85,9 +86,7 @@ local_configs:
     remp_smtp_host_password: ''
     remp_smtp_host_secure: ''
 
-
 # If running Mailer on Valet, please uncomment the following lines and adjust the full path to REMP/Mailer folder
-
 #webpack:
 #    build:
 #        directory: /FULL_PATH_TO_REMP_FOLDER/Mailer/www/assets/vendor
