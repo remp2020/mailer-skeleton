@@ -23,19 +23,43 @@ Recommended _(tested)_ versions are:
 cp .env.example .env
 ```
 ```
-cp app/config/config.local.example.neon app/config/config.local.neon
+cp app/config/config.local.neon.example app/config/config.local.neon
 ```
 ```
 cp docker-compose.override.example.yml docker-compose.override.yml
 ```
+
 No changes are required if you want to run application as it is.
+
+Note: nginx web application runs on the port 80. Make sure this port is not used, otherwise you will encounter error like this (when initializing Docker):
+
+```
+ERROR: for nginx  Cannot start service nginx: Ports are not available: listen tcp 0.0.0.0:80: bind: address already in use
+```
+
+In such case, change port mapping in `docker-composer.override.yml`. For example, the following setting maps internal port 80 to external port 8080, so the application will be available at http://mailer.press:8080.
+```yaml
+services:
+# ...
+  nginx:
+    ports:
+      - "8080:80"
+```
+
+
+
 
 2. Setup host 
 
-Default host used by application is `http://mailer.press`. It should by pointing to localhost (`127.0.0.1`), so add this to your local `/etc/hosts` file. You can use this command:
+Default host used by application is `http://mailer.press`.
+It should by pointing to localhost (`127.0.0.1`), so add this to your local `/etc/hosts` file. 
+In addition, please add MailHog as a default email testing tool. Use the following commands: 
+
+
 
 ```bash
 echo '127.0.0.1 mailer.press' | sudo tee -a /etc/hosts
+echo '127.0.0.1 mailog.mailer.press' | sudo tee -a /etc/hosts
 ```
 
 3. Start `docker-compose`
@@ -109,19 +133,13 @@ Clone this repository and run the following commands inside the project folder:
 # 1. Download PHP dependencies
 composer install
 
-# 2. Download JS/HTML dependencies
-yarn install
-
-# !. use extra switch if your system doesn't support symlinks (Windows; can be enabled)
-yarn install --no-bin-links
-
-# 3. Generate assets
+# 2. Build JS and assets
 make js
 
-# 4. Run migrations
+# 3. Run migrations
 php bin/command.php migrate:migrate
 
-# 5. Run seeders
+# 4. Run seeders
 php bin/command.php db:seed
 php bin/command.php demo:seed # optional
 ```
@@ -133,5 +151,5 @@ You can override any default config from
 #### Dependencies
 
 - PHP 7.4
-- MySQL 5.7
+- MySQL 8
 - Redis 3.2

@@ -11,6 +11,7 @@ services:
       default:
         aliases:
           - "mailer.press"
+          - "mailog.press"
 
   mailer:
     build: "docker/php"
@@ -22,6 +23,7 @@ services:
       - "nginx"
       - "mysql"
       - "redis"
+      - "mailhog"
     restart: "unless-stopped"
 
   adminer:
@@ -34,7 +36,7 @@ services:
     restart: "unless-stopped"
 
   mysql:
-    image: "mysql:5.7"
+    image: "mysql:8.0"
     volumes:
       - "mysql-data:/var/lib/mysql"
       - ".:/data"
@@ -53,6 +55,11 @@ services:
     volumes:
       - "redis-data:/data"
     restart: "unless-stopped"
+
+  mailhog:
+    image: "mailhog/mailhog:v1.0.1"
+    environment:
+      MH_HOSTNAME: "mailhog.press"
 
 volumes:
   mysql-data:
