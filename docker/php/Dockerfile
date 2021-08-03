@@ -1,8 +1,8 @@
-FROM php:7.4.14-fpm
+FROM php:7.4.22-fpm
 
 ENV BUILD_DEPS libc-client-dev libicu-dev git libzip-dev zlib1g-dev libkrb5-dev libpng-dev g++ build-essential libssl-dev libsasl2-dev libmagickwand-dev libonig-dev
 
-ENV RUN_DEPS git wget vim curl less gnupg unzip pv
+ENV RUN_DEPS git wget vim curl less gnupg unzip pv cron
 
 # INIT
 
@@ -11,11 +11,19 @@ RUN apt-get update && apt-get install -y ${BUILD_DEPS} ${RUN_DEPS} --no-install-
     && docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
     && docker-php-ext-install -j$(nproc) mysqli pdo_mysql bcmath iconv zip intl imap gd soap sockets
 
+# CRON
+
+COPY cron.sh /root/cron.sh
+
+RUN ["chmod", "+x", "/root/cron.sh"]
+
+COPY crontab /etc/crontab
+
 # OPCache
 
 RUN docker-php-ext-install opcache
 
-ADD opcache.ini /tmp/opcache.ini
+COPY opcache.ini /tmp/opcache.ini
 
 RUN cat /tmp/opcache.ini >> /usr/local/etc/php/conf.d/docker-php-ext-opcache.ini
 
@@ -23,7 +31,7 @@ RUN cat /tmp/opcache.ini >> /usr/local/etc/php/conf.d/docker-php-ext-opcache.ini
 
 RUN pecl install xdebug && docker-php-ext-enable xdebug
 
-ADD xdebug.ini /tmp/xdebug.ini
+COPY xdebug.ini /tmp/xdebug.ini
 
 RUN cat /tmp/xdebug.ini >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
@@ -31,7 +39,7 @@ RUN cat /tmp/xdebug.ini >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
 RUN pecl install imagick && docker-php-ext-enable imagick
 
-ADD log.conf /usr/local/etc/php-fpm.d/zz-log.conf
+COPY log.conf /usr/local/etc/php-fpm.d/zz-log.conf
 
 # COMPOSER
 

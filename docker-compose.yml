@@ -26,6 +26,33 @@ services:
       - "mailhog"
     restart: "unless-stopped"
 
+  mailer-cron:
+    build: "docker/php"
+    volumes:
+      - ".:/var/www/html:rw"
+    depends_on:
+      - "mailer"
+    entrypoint: ["/root/cron.sh"]
+    restart: "unless-stopped"
+
+  mailer-hermes:
+    build: "docker/php"
+    volumes:
+      - ".:/var/www/html:rw"    
+    depends_on:
+      - "mailer"
+    entrypoint: ["php", "bin/command.php", "worker:hermes"]
+    restart: "unless-stopped"
+
+  mailer-mail-worker:
+    build: "docker/php"
+    volumes:
+      - ".:/var/www/html:rw"
+    depends_on:
+      - "mailer"
+    entrypoint: ["php", "bin/command.php", "worker:mail"]
+    restart: "unless-stopped"
+
   adminer:
     build: "docker/php"
     volumes:
