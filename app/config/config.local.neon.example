@@ -25,6 +25,8 @@ services:
         setup:
             - add(Remp\MailerModule\Commands\SyncUserSubscriptionsCommand())
             - add(Remp\MailerModule\Commands\MailgunEventsCommand())
+            # Sample command - servers as an example of adding custom code to Mailer
+            - add(Remp\Mailer\Commands\SampleCommand())
             # If you're using Beam, you can enable this command to pull conversions from there
             # - add(Remp\MailerModule\Commands\ProcessConversionStatsCommand())
 
@@ -82,10 +84,10 @@ local_configs:
     # Configuring usage of mailhog for local development
     default_mailer: remp_smtp
     remp_smtp_host: mailhog
-    remp_smtp_host_port: 1025
-    remp_smtp_host_username: ''
-    remp_smtp_host_password: ''
-    remp_smtp_host_secure: ''
+    remp_smtp_port: 1025
+    remp_smtp_username: ''
+    remp_smtp_password: ''
+    remp_smtp_secure: ''
 
 # If running Mailer on Valet, please uncomment the following lines and adjust the full path to REMP/Mailer folder
 #webpack:

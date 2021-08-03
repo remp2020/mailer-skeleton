@@ -2,20 +2,15 @@
 
 namespace Remp\Mailer\Commands;
 
-use Remp\MailerModule\Models\Sender;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class SampleCommand extends Command
 {
-    private $sender;
-
-    public function __construct(
-        Sender $sender
-    ) {
+    public function __construct()
+    {
         parent::__construct();
-        $this->sender = $sender;
     }
 
     protected function configure(): void
