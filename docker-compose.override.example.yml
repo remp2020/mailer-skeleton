@@ -5,7 +5,7 @@ services:
   nginx:
     ports:
       - "80:80"
-      - 
+
   mysql:
     ports:
       - "3306:3306"
