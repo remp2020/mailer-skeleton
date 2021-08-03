@@ -3551,16 +3551,16 @@
         },
         {
             "name": "php-http/message",
-            "version": "1.11.1",
+            "version": "1.11.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-http/message.git",
-                "reference": "887734d9c515ad9a564f6581a682fff87a6253cc"
+                "reference": "295c82867d07261f2fa4b3a26677519fc6f7f5f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-http/message/zipball/887734d9c515ad9a564f6581a682fff87a6253cc",
-                "reference": "887734d9c515ad9a564f6581a682fff87a6253cc",
+                "url": "https://api.github.com/repos/php-http/message/zipball/295c82867d07261f2fa4b3a26677519fc6f7f5f6",
+                "reference": "295c82867d07261f2fa4b3a26677519fc6f7f5f6",
                 "shasum": ""
             },
             "require": {
@@ -3619,9 +3619,9 @@
             ],
             "support": {
                 "issues": "https://github.com/php-http/message/issues",
-                "source": "https://github.com/php-http/message/tree/1.11.1"
+                "source": "https://github.com/php-http/message/tree/1.11.2"
             },
-            "time": "2021-05-24T18:11:08+00:00"
+            "time": "2021-08-03T11:52:11+00:00"
         },
         {
             "name": "php-http/message-factory",
@@ -4673,12 +4673,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/mailer-module.git",
-                "reference": "62a28f6c1be540a27c25383537393b2fea4ade76"
+                "reference": "caf6004057d1f306975d1cee2b99eb649dd1cae8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/remp2020/mailer-module/zipball/62a28f6c1be540a27c25383537393b2fea4ade76",
-                "reference": "62a28f6c1be540a27c25383537393b2fea4ade76",
+                "url": "https://api.github.com/repos/remp2020/mailer-module/zipball/caf6004057d1f306975d1cee2b99eb649dd1cae8",
+                "reference": "caf6004057d1f306975d1cee2b99eb649dd1cae8",
                 "shasum": ""
             },
             "require": {
@@ -4741,9 +4741,9 @@
             "homepage": "https://remp2030.com",
             "support": {
                 "issues": "https://github.com/remp2020/mailer-module/issues",
-                "source": "https://github.com/remp2020/mailer-module/tree/0.27.1"
+                "source": "https://github.com/remp2020/mailer-module/tree/master"
             },
-            "time": "2021-08-02T11:41:08+00:00"
+            "time": "2021-08-03T07:28:41+00:00"
         },
         {
             "name": "remp/remp-commons",

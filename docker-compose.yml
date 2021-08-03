@@ -12,6 +12,7 @@ services:
         aliases:
           - "mailer.press"
           - "mailog.press"
+          - "adminer.press"
 
   mailer:
     build: "docker/php"
@@ -23,7 +24,6 @@ services:
       - "nginx"
       - "mysql"
       - "redis"
-      - "mailhog"
     restart: "unless-stopped"
 
   mailer-cron:
@@ -32,6 +32,7 @@ services:
       - ".:/var/www/html:rw"
     depends_on:
       - "mailer"
+      - "mysql"
     entrypoint: ["/root/cron.sh"]
     restart: "unless-stopped"
 
@@ -41,6 +42,7 @@ services:
       - ".:/var/www/html:rw"    
     depends_on:
       - "mailer"
+      - "mysql"
     entrypoint: ["php", "bin/command.php", "worker:hermes"]
     restart: "unless-stopped"
 

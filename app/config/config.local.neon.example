@@ -80,6 +80,7 @@ services:
 # local_configs override DBs configs records.
 local_configs:
     # Configuring usage of mailhog for local development
+    default_mailer: remp_smtp
     remp_smtp_host: mailhog
     remp_smtp_host_port: 1025
     remp_smtp_host_username: ''

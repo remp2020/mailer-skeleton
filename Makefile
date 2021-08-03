@@ -2,6 +2,16 @@
 
 PHP_FOLDERS=app bin extensions tests
 
+install:
+	composer install
+	make js
+	php bin/command.php migrate:migrate
+	php bin/command.php db:seed
+
+install-demo:
+	make install
+	php bin/command.php demo:seed
+
 js:
 	yarn install
 	yarn production

@@ -21,11 +21,9 @@ Recommended _(tested)_ versions are:
 1. Prepare environment & configuration files
 ```
 cp .env.example .env
-```
-```
+
 cp app/config/config.local.neon.example app/config/config.local.neon
-```
-```
+
 cp docker-compose.override.example.yml docker-compose.override.yml
 ```
 
@@ -59,62 +57,42 @@ In addition, please add MailHog as a default email testing tool. Use the followi
 
 ```bash
 echo '127.0.0.1 mailer.press' | sudo tee -a /etc/hosts
-echo '127.0.0.1 mailog.mailer.press' | sudo tee -a /etc/hosts
+echo '127.0.0.1 mailog.press' | sudo tee -a /etc/hosts
 ```
 
-3. Start `docker-compose`
+3. Perform initialization of `mailer` container
 
+Start container using `docker-compose`:
 ```
-docker-compose up
+docker-compose up mailer
 ```
 
-You should see log of starting containers.
+You should see log of starting containers. Now enter the application docker container:
 
-4. Enter application docker container
-
-```
+```bash
+# run from the same folder as `docker-compose`
 docker-compose exec mailer /bin/bash
 ```
 
-Following commands will be run inside container.
+When inside the container, choose and run one of the two installation options:
 
-5. Update permissions for docker application
+- Fully ready application with demo data:
 
-Owner of folders `temp` and `log` is user on host machine. Application needs to have right to write there.
-
-```
-mkdir temp log; chmod -R a+rw temp log
+```bash
+make install-demo
 ```
 
-6. Install composer packages.
+- No demo data:
 
-```
-composer install
-```
-
-7. Install and build JS packages.
-
-```
-make js
+```bash
+make install
 ```
 
-8. Initialize and migrate database.
+5. Restart containers
 
-```
-php bin/command.php migrate:migrate
-```
+Stop all running containers and run `docker-compose up` again. All containers should start, including service containers. 
 
-9. Seed database with required data
-
-```
-php bin/command.php db:seed
-```
-
-10. (Optional) Seed database with demo data
-
-```
-php bin/command.php demo:seed
-```
+6. Log-in to Mailer
 
 Access application via web browser. Default configuration:
 
@@ -123,7 +101,7 @@ Access application via web browser. Default configuration:
     - Email: `admin@admin.sk`
     - Password: `passphrase_change_me`
     
-**IMPORTANT:** Please run steps 6-9 every time you update Mailer using `composer update`.
+**IMPORTANT:** Please run step 3 every time you update Mailer-skeleton using `composer update`.
 
 ### Manual installation
 
