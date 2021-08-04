@@ -11,8 +11,8 @@ services:
       default:
         aliases:
           - "mailer.press"
-          - "mailog.press"
-          - "adminer.press"
+          - "mailhog.mailer.press"
+          - "adminer.mailer.press"
 
   mailer:
     build: "docker/php"
@@ -88,7 +88,7 @@ services:
   mailhog:
     image: "mailhog/mailhog:v1.0.1"
     environment:
-      MH_HOSTNAME: "mailhog.press"
+      MH_HOSTNAME: "mailhog.mailer.press"
 
 volumes:
   mysql-data:
