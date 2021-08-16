@@ -1,16 +1,10 @@
 version: "3"
 
 services:
-
   nginx:
     ports:
       - "80:80"
-
-  mysql:
-    ports:
-      - "3306:3306"
-
-  mailhog:
-    ports:
-      - "8025:8025"
-
+# Uncomment if you want to expose MySQL port 3306 outside of Docker
+#  mysql:
+#    ports:
+#      - "3306:3306"

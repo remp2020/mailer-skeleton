@@ -19,6 +19,8 @@ RUN ["chmod", "+x", "/root/cron.sh"]
 
 COPY crontab /etc/crontab
 
+RUN ["chmod", "644", "/etc/crontab"]
+
 # OPCache
 
 RUN docker-php-ext-install opcache
@@ -59,7 +61,7 @@ ENV YARN_CACHE_FOLDER /yarn
 
 RUN rm -rf /var/lib/apt/lists/*
 
-RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
 
 RUN apt-get install -y nodejs
 

@@ -1,20 +1,20 @@
 {
-    "name": "remp/mail-skeleton",
+    "name": "remp/mailer-skeleton",
     "description": "REMP Mailer Skeleton",
     "type": "project",
     "homepage": "https://remp2030.com",
     "license": ["MIT"],
     "config": {
-        "sort-packages": true
+          "sort-packages": true
     },
     "require": {
-        "remp/mailer-module": "dev-master"
+        "remp/mailer-module": "^0.27.1"
     },
     "autoload": {
         "psr-4": {
             "Remp\\Mailer\\": "app/"
         }
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true
 }
