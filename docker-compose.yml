@@ -12,21 +12,19 @@ services:
         aliases:
           - "mailer.press"
           - "mailhog.mailer.press"
-          - "adminer.mailer.press"
 
   mailer:
     build: "docker/php"
-    extra_hosts:
-      - "docker:192.168.99.100"
     volumes:
       - ".:/var/www/html:rw"
     depends_on:
       - "nginx"
       - "mysql"
       - "redis"
+      - "mailhog"
     restart: "unless-stopped"
 
-  mailer-cron:
+  cron:
     build: "docker/php"
     volumes:
       - ".:/var/www/html:rw"
@@ -36,7 +34,7 @@ services:
     entrypoint: ["/root/cron.sh"]
     restart: "unless-stopped"
 
-  mailer-hermes:
+  hermes-worker:
     build: "docker/php"
     volumes:
       - ".:/var/www/html:rw"    
@@ -46,7 +44,7 @@ services:
     entrypoint: ["php", "bin/command.php", "worker:hermes"]
     restart: "unless-stopped"
 
-  mailer-mail-worker:
+  mail-worker:
     build: "docker/php"
     volumes:
       - ".:/var/www/html:rw"
@@ -55,17 +53,10 @@ services:
     entrypoint: ["php", "bin/command.php", "worker:mail"]
     restart: "unless-stopped"
 
-  adminer:
-    build: "docker/php"
-    volumes:
-      - ".:/var/www/html:rw"
-    depends_on:
-      - "nginx"
-      - "mysql"
-    restart: "unless-stopped"
-
   mysql:
     image: "mysql:8.0"
+    cap_add:
+      - SYS_NICE  
     volumes:
       - "mysql-data:/var/lib/mysql"
       - ".:/data"
