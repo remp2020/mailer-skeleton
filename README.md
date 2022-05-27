@@ -132,7 +132,6 @@ Recommended _(tested)_ versions are:
 
 #### Installation
 
-
 [comment]: <> (Clone this repository and run the following command inside the project folder:)
 Clone this repository, go inside the folder and run the following to create configuration files from the sample ones:
 

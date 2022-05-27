@@ -8,7 +8,7 @@
           "sort-packages": true
     },
     "require": {
-        "remp/mailer-module": "^0.27.1"
+        "remp/mailer-module": "^0.32"
     },
     "autoload": {
         "psr-4": {
