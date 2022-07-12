@@ -18,13 +18,22 @@ Recommended _(tested)_ versions are:
 
 #### Steps to install application within docker
 
-1. Get the application
+1. A) Get the application (via composer)
 
     ```bash
     composer create-project --no-install remp/mailer-skeleton path/to/install
     ```
     ```bash
     cd path/to/install
+    ```
+
+    B) Get the application (via github)
+    ``` bash
+    git clone https://github.com/remp2020/mailer-skeleton.git
+    ```
+
+    ```bash
+    cd mailer-skeleton
     ```
 
 2. Prepare environment & configuration files
@@ -203,19 +212,20 @@ ENV=production
 To test the Mailer functionality, we recommend going through the following basic scenario:
 
 1. Log-in to Mailer at URL http://mailer.press
-2. Go to [Jobs](http://mailer.press/job) page and click **Add new job**
-3. Select values in **Segment** and **Email A alternative** inputs. Keep other inputs empty.
+2. Go to [Jobs](http://mailer.press/job) 
+4. Click **Add new job** 
+5. Select values in **Segment** and **Email A alternative** inputs. Keep other inputs empty.
     - Demo values of _Emails_, _Layouts_ and _Newsletter lists_ are seeded by default in demo installation.
-4. Click **Save and start** button
-5. Wait approximately a minute, so Mailer processes the job. Check the job status at [Jobs](http://mailer.press/job) page.
-6. After the job is processed (status "DONE"), go to MailHog at http://mailhog.mailer.press/ and check that emails were successfully received. 
+6. Click **Save and start** button
+7. Wait approximately a minute, so Mailer processes the job. Check the job status at [Jobs](http://mailer.press/job) page.
+8. After the job is processed (status "DONE"), go to MailHog at http://mailhog.mailer.press/ and check that emails were successfully received. 
 
 ## Customization
 
 Mailer-skeleton is ready for customization. Please see the [mailer-module](https://github.com/remp2020/mailer-module) documentation for more information. 
 
-As a sample, mailer-skeleton provides `app/Commands/SampleCommand.php`, extending `Command` class. 
-It is registered as a new command in `config.local.neon` file. Run it by connecting to the container:
+As a sample, mailer-skeleton provides `app/Commands/SampleCommand.php`, extending the `Command` class. 
+It is registered as a new command in the `config.local.neon` file. Run it by connecting to the container:
 
 ```bash
 docker-compose exec mailer bash
