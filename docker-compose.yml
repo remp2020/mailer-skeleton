@@ -14,6 +14,10 @@ services:
           - "mailhog.mailer.press"
 
   mailer:
+    environment:
+      - XDEBUG_TRIGGER
+      - XDEBUG_CONFIG
+      - PHP_IDE_CONFIG=serverName=mailer.press
     build: "docker/php"
     volumes:
       - ".:/var/www/html:rw"
@@ -50,6 +54,7 @@ services:
       - ".:/var/www/html:rw"
     depends_on:
       - "mailer"
+      - "mailhog"
     entrypoint: ["php", "bin/command.php", "worker:mail"]
     restart: "unless-stopped"
 
