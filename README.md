@@ -18,8 +18,9 @@ Recommended _(tested)_ versions are:
 
 #### Steps to install application within docker
 
-1. A) Get the application (via composer)
+1. Get the application 
 
+    A) Using Composer:
     ```bash
     composer create-project --no-install remp/mailer-skeleton path/to/install
     ```
@@ -27,7 +28,7 @@ Recommended _(tested)_ versions are:
     cd path/to/install
     ```
 
-    B) Get the application (via github)
+    B) Using GitHub:
     ``` bash
     git clone https://github.com/remp2020/mailer-skeleton.git
     ```
@@ -46,9 +47,8 @@ Recommended _(tested)_ versions are:
     ```bash
     cp docker-compose.override.example.yml docker-compose.override.yml
     ```
-    
     No changes are required if you want to run application as it is.
-    
+
     **Note:** nginx web application runs on the port 80. Make sure this port is not used, otherwise you will encounter error like this when initializing Docker:
     
     ```
@@ -64,7 +64,7 @@ Recommended _(tested)_ versions are:
           - "8080:80"
     ```
 
-3. Setup host 
+4. Setup host 
 
     Default host used by application is `http://mailer.press`.
     This domain should by pointing to localhost (`127.0.0.1`), so add it to local `/etc/hosts` file. 
@@ -77,10 +77,10 @@ Recommended _(tested)_ versions are:
     echo '127.0.0.1 mailhog.mailer.press' | sudo tee -a /etc/hosts
     ```
 
-4. Start Docker containers
+5. Start Docker containers
 
     ```bash
-    docker-compose up
+    docker compose up
     ```
     
     You should see logs of starting containers. This may include errors, because application was not yet initialized.
@@ -88,7 +88,7 @@ Recommended _(tested)_ versions are:
     
     ```bash
     # run from anywhere in the project
-    docker-compose exec mailer bash
+    docker compose exec mailer bash
     ```
     
     When inside the container, add required permissions:
@@ -111,7 +111,7 @@ Recommended _(tested)_ versions are:
         make install
         ```
 
-5. Log-in to Mailer
+6. Log-in to Mailer
 
     Access application via web browser. Default configuration:
     
@@ -126,9 +126,9 @@ Recommended _(tested)_ versions are:
 
 #### Dependencies
 
-- PHP 7.4
+- PHP 8.0
 - MySQL 8
-- Redis 3.2
+- Redis 6.2
 
 #### Installation
 
@@ -227,7 +227,7 @@ As a sample, mailer-skeleton provides `app/Commands/SampleCommand.php`, extendin
 It is registered as a new command in the `config.local.neon` file. Run it by connecting to the container:
 
 ```bash
-docker-compose exec mailer bash
+docker compose exec mailer bash
 ```
 and executing the command:
 
@@ -235,6 +235,13 @@ and executing the command:
 php bin/command.php mail:sample-command
 ```
 
+## Troubleshooting
+
+Some known errors that have occurred and how to fix them.
+
+#### Docker SMTP error "Cannot assign requested address"
+
+In some cases (such as running containers for the first time), a docker container might end up reporting this error message. Simply restarting the problematic container should help.  
 
 
 
