@@ -29,11 +29,6 @@ final class Bootstrap
             $configurator->setDebugMode(false);
         }
 
-        // terminal
-        if (!isset($_SERVER['HTTP_HOST']) && isset($_SERVER['SHELL'])) {
-            $configurator->setDebugMode(true);
-        }
-
         $configurator->enableTracy(__DIR__ . '/../log');
 
         $configurator->setTimeZone($_ENV['TIMEZONE']);
@@ -50,5 +45,14 @@ final class Bootstrap
         $configurator->addConfig(__DIR__ . '/config/config.local.neon');
 
         return $configurator;
+    }
+
+    public static function isCli()
+    {
+        return PHP_SAPI === 'cli'
+            || PHP_SAPI === 'phpdbg'
+            || isset($_SERVER['SHELL'])
+            || isset($_SERVER['TERM'])
+            || defined('STDIN');
     }
 }
