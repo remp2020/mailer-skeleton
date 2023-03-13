@@ -5,7 +5,10 @@
     "homepage": "https://remp2030.com",
     "license": ["MIT"],
     "config": {
-          "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
     },
     "require": {
         "remp/mailer-module": "^1.0"

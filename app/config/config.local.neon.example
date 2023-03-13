@@ -50,6 +50,10 @@ services:
     hermesWorker:
         setup:
             - add('email-dropped', @unsubscribeDroppedHandler)
+            # Enable these only if Remp\MailerModule\Tracker\Remp (or other Itracker implementation) is enabled as well.
+#            - add('mail-sent', Remp\MailerModule\Hermes\MailSentHandler())
+#            - add('user-subscribed', Remp\MailerModule\Hermes\TrackSubscribeUnsubscribeHandler())
+#            - add('user-unsubscribed', Remp\MailerModule\Hermes\TrackSubscribeUnsubscribeHandler())
 
     # Setup loggers output
     commandsLogger:
