@@ -126,7 +126,7 @@ Recommended _(tested)_ versions are:
 
 #### Dependencies
 
-- PHP 8.0
+- PHP 8.1
 - MySQL 8
 - Redis 6.2
 
@@ -213,7 +213,7 @@ To test the Mailer functionality, we recommend going through the following basic
 1. Log-in to Mailer at URL http://mailer.press
 2. Go to [Jobs](http://mailer.press/job) 
 4. Click **Add new job** 
-5. Select values in **Segment** and **Email A alternative** inputs. Keep other inputs empty.
+5. Select values in **Include segments**, **Newsletter list**, and **Email A alternative** inputs. Keep other inputs empty.
     - Demo values of _Emails_, _Layouts_ and _Newsletter lists_ are seeded by default in demo installation.
 6. Click **Save and start** button
 7. Wait approximately a minute, so Mailer processes the job. Check the job status at [Jobs](http://mailer.press/job) page.

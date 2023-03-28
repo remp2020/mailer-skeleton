@@ -14,7 +14,7 @@
     "production": "cross-env MAILER_MODULE_PATH=vendor/remp/mailer-module mix --production --mix-config=vendor/remp/mailer-module/webpack.mix.js"
   },
   "engines": {
-    "node": ">=12"
+    "node": ">=18"
   },
   "dependencies": {
     "mailer-module": "file:vendor/remp/mailer-module"

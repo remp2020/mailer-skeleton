@@ -1,10 +1,24 @@
-FROM php:8.0.20-fpm
+FROM php:8.1.14-fpm
+
+# ADD NON-ROOT USER; IF THE VARIABLES ARE NOT SET, DOCKER COMPOSE DEFAULTS TO 1000:1000 "docker"
+
+ARG UID
+ARG GID
+ARG UNAME
+
+RUN groupadd -g ${GID} -o ${UNAME}
+
+RUN usermod -a -G ${UNAME} www-data
+
+RUN useradd -m -u ${UID} -g ${GID} -o -s /bin/bash ${UNAME}
+
+# INIT
 
 ENV BUILD_DEPS libc-client-dev libicu-dev git libzip-dev zlib1g-dev libkrb5-dev libpng-dev g++ build-essential libssl-dev libsasl2-dev libmagickwand-dev libonig-dev
 
 ENV RUN_DEPS git wget vim curl less gnupg unzip pv cron
 
-# INIT
+# INSTALL DEPENDENCIES
 
 RUN apt-get update && apt-get install -y ${BUILD_DEPS} ${RUN_DEPS} --no-install-recommends \
     && docker-php-ext-configure intl \
@@ -13,9 +27,9 @@ RUN apt-get update && apt-get install -y ${BUILD_DEPS} ${RUN_DEPS} --no-install-
 
 # CRON
 
-COPY cron.sh /root/cron.sh
+COPY cron.sh /usr/local/bin/cron.sh
 
-RUN ["chmod", "+x", "/root/cron.sh"]
+RUN ["chmod", "+x", "/usr/local/bin/cron.sh"]
 
 COPY crontab /etc/crontab
 
@@ -49,9 +63,9 @@ ENV COMPOSER_HOME /composer
 
 ENV PATH /composer/vendor/bin:$PATH
 
-ENV COMPOSER_ALLOW_SUPERUSER 1
-
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+RUN mkdir -p /composer/cache && chown -R ${UID}:${GID} /composer/cache
 
 # NODEJS + YARN
 
@@ -61,11 +75,13 @@ ENV YARN_CACHE_FOLDER /yarn
 
 RUN rm -rf /var/lib/apt/lists/*
 
-RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_18.x | bash -
 
 RUN apt-get install -y nodejs
 
-RUN curl -sL https://yarnpkg.com/install.sh | bash -
+RUN npm install --global yarn
+
+RUN mkdir -p ${YARN_CACHE_FOLDER} && chmod -R 777 ${YARN_CACHE_FOLDER}
 
 # VOLUME
 
