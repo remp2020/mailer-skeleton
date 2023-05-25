@@ -1,5 +1,5 @@
 php:
-	intl.default_locale: sk_SK
+	intl.default_locale: en_EN
 
 services:
     authenticator:
