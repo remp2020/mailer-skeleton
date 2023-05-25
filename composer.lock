@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fee2ed79e03eac880bab677ccb55454b",
+    "content-hash": "fe431d381c7dd5a4b050cbbec1229913",
     "packages": [
         {
             "name": "brick/math",
@@ -4273,16 +4273,16 @@
         },
         {
             "name": "remp/mailer-module",
-            "version": "2.1.0",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/mailer-module.git",
-                "reference": "b86084929ff516fbeb634dd2fb45a69b7926a1f7"
+                "reference": "4239f60e0d8c8fda8237e3285a8091454e6ad613"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/remp2020/mailer-module/zipball/b86084929ff516fbeb634dd2fb45a69b7926a1f7",
-                "reference": "b86084929ff516fbeb634dd2fb45a69b7926a1f7",
+                "url": "https://api.github.com/repos/remp2020/mailer-module/zipball/4239f60e0d8c8fda8237e3285a8091454e6ad613",
+                "reference": "4239f60e0d8c8fda8237e3285a8091454e6ad613",
                 "shasum": ""
             },
             "require": {
@@ -4341,9 +4341,9 @@
             "homepage": "https://remp2030.com",
             "support": {
                 "issues": "https://github.com/remp2020/mailer-module/issues",
-                "source": "https://github.com/remp2020/mailer-module/tree/2.1.0"
+                "source": "https://github.com/remp2020/mailer-module/tree/2.2.0"
             },
-            "time": "2023-04-20T13:28:48+00:00"
+            "time": "2023-05-22T21:19:40+00:00"
         },
         {
             "name": "remp/remp-commons",
