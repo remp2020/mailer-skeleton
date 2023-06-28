@@ -7,11 +7,11 @@
   ],
   "private": true,
   "scripts": {
-    "dev": "cross-env MAILER_MODULE_PATH=vendor/remp/mailer-module mix --mix-config=vendor/remp/mailer-module/webpack.mix.js",
-    "watch": "cross-env MAILER_MODULE_PATH=vendor/remp/mailer-module mix watch --mix-config=vendor/remp/mailer-module/webpack.mix.js",
-    "watch-poll": "cross-env MAILER_MODULE_PATH=vendor/remp/mailer-module mix watch --mix-config=vendor/remp/mailer-module/webpack.mix.js -- --watch-options-poll=1000",
-    "hot": "cross-env MAILER_MODULE_PATH=vendor/remp/mailer-module mix watch --hot --mix-config=vendor/remp/mailer-module/webpack.mix.js",
-    "production": "cross-env MAILER_MODULE_PATH=vendor/remp/mailer-module mix --production --mix-config=vendor/remp/mailer-module/webpack.mix.js"
+    "dev": "npx cross-env MAILER_MODULE_PATH=vendor/remp/mailer-module mix --mix-config=vendor/remp/mailer-module/webpack.mix.js",
+    "watch": "npx cross-env MAILER_MODULE_PATH=vendor/remp/mailer-module mix watch --mix-config=vendor/remp/mailer-module/webpack.mix.js",
+    "watch-poll": "npx cross-env MAILER_MODULE_PATH=vendor/remp/mailer-module mix watch --mix-config=vendor/remp/mailer-module/webpack.mix.js -- --watch-options-poll=1000",
+    "hot": "npx cross-env MAILER_MODULE_PATH=vendor/remp/mailer-module mix watch --hot --mix-config=vendor/remp/mailer-module/webpack.mix.js",
+    "production": "npx cross-env MAILER_MODULE_PATH=vendor/remp/mailer-module mix --production --mix-config=vendor/remp/mailer-module/webpack.mix.js"
   },
   "engines": {
     "node": ">=18"
