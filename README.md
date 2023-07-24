@@ -13,8 +13,8 @@ The simplest possible way is to run this application in docker containers. Docke
 
 Recommended _(tested)_ versions are:
 
-- [Docker](https://www.docker.com/products/docker-engine) - 20.10.5, build 55c4c88
-- [Docker Compose](https://docs.docker.com/compose/overview/) - 1.29.0, build 07737305
+- [Docker](https://www.docker.com/products/docker-engine) - 24.0.4
+- [Docker Compose](https://docs.docker.com/compose/overview/) - 2.19.1
 
 #### Steps to install application within docker
 

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "82f2721f65d310230c241a1c2d60548e",
+    "content-hash": "3000d1da92c7d23850ea5da3639edbe3",
     "packages": [
         {
             "name": "brick/math",
@@ -63,7 +63,7 @@
         },
         {
             "name": "cakephp/core",
-            "version": "4.4.14",
+            "version": "4.4.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/core.git",
@@ -123,7 +123,7 @@
         },
         {
             "name": "cakephp/database",
-            "version": "4.4.14",
+            "version": "4.4.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/database.git",
@@ -179,7 +179,7 @@
         },
         {
             "name": "cakephp/datasource",
-            "version": "4.4.14",
+            "version": "4.4.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/datasource.git",
@@ -237,7 +237,7 @@
         },
         {
             "name": "cakephp/utility",
-            "version": "4.4.14",
+            "version": "4.4.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/utility.git",
@@ -1545,16 +1545,16 @@
         },
         {
             "name": "mailgun/mailgun-php",
-            "version": "v3.5.8",
+            "version": "v3.5.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mailgun/mailgun-php.git",
-                "reference": "5039483324111a2c3356d25dffb26699339d00ee"
+                "reference": "181749e4daea67cb33cdb27ac422261d3601aeb9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mailgun/mailgun-php/zipball/5039483324111a2c3356d25dffb26699339d00ee",
-                "reference": "5039483324111a2c3356d25dffb26699339d00ee",
+                "url": "https://api.github.com/repos/mailgun/mailgun-php/zipball/181749e4daea67cb33cdb27ac422261d3601aeb9",
+                "reference": "181749e4daea67cb33cdb27ac422261d3601aeb9",
                 "shasum": ""
             },
             "require": {
@@ -1599,9 +1599,9 @@
             "description": "The Mailgun SDK provides methods for all API functions.",
             "support": {
                 "issues": "https://github.com/mailgun/mailgun-php/issues",
-                "source": "https://github.com/mailgun/mailgun-php/tree/v3.5.8"
+                "source": "https://github.com/mailgun/mailgun-php/tree/v3.5.9"
             },
-            "time": "2023-06-23T15:24:18+00:00"
+            "time": "2023-07-19T11:28:29+00:00"
         },
         {
             "name": "ml/iri",
@@ -3166,16 +3166,16 @@
         },
         {
             "name": "php-http/discovery",
-            "version": "1.19.0",
+            "version": "1.19.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-http/discovery.git",
-                "reference": "1856a119a0b0ba8da8b5c33c080aa7af8fac25b4"
+                "reference": "57f3de01d32085fea20865f9b16fb0e69347c39e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-http/discovery/zipball/1856a119a0b0ba8da8b5c33c080aa7af8fac25b4",
-                "reference": "1856a119a0b0ba8da8b5c33c080aa7af8fac25b4",
+                "url": "https://api.github.com/repos/php-http/discovery/zipball/57f3de01d32085fea20865f9b16fb0e69347c39e",
+                "reference": "57f3de01d32085fea20865f9b16fb0e69347c39e",
                 "shasum": ""
             },
             "require": {
@@ -3238,9 +3238,9 @@
             ],
             "support": {
                 "issues": "https://github.com/php-http/discovery/issues",
-                "source": "https://github.com/php-http/discovery/tree/1.19.0"
+                "source": "https://github.com/php-http/discovery/tree/1.19.1"
             },
-            "time": "2023-06-19T08:45:36+00:00"
+            "time": "2023-07-11T07:02:26+00:00"
         },
         {
             "name": "php-http/httplug",
@@ -4268,16 +4268,16 @@
         },
         {
             "name": "remp/mailer-module",
-            "version": "3.0.0",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/mailer-module.git",
-                "reference": "ed9ffd3be31cee8f6897f309f9f1f9611b13aa0b"
+                "reference": "a593fa2edf1ffea6f1629223f6e75f2efc940f29"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/remp2020/mailer-module/zipball/ed9ffd3be31cee8f6897f309f9f1f9611b13aa0b",
-                "reference": "ed9ffd3be31cee8f6897f309f9f1f9611b13aa0b",
+                "url": "https://api.github.com/repos/remp2020/mailer-module/zipball/a593fa2edf1ffea6f1629223f6e75f2efc940f29",
+                "reference": "a593fa2edf1ffea6f1629223f6e75f2efc940f29",
                 "shasum": ""
             },
             "require": {
@@ -4336,13 +4336,13 @@
             "homepage": "https://remp2030.com",
             "support": {
                 "issues": "https://github.com/remp2020/mailer-module/issues",
-                "source": "https://github.com/remp2020/mailer-module/tree/3.0.0"
+                "source": "https://github.com/remp2020/mailer-module/tree/3.1.0"
             },
-            "time": "2023-06-28T09:40:09+00:00"
+            "time": "2023-07-24T06:54:11+00:00"
         },
         {
             "name": "remp/remp-commons",
-            "version": "3.0.0",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/remp2020/remp-commons.git",
@@ -4387,7 +4387,7 @@
             ],
             "support": {
                 "issues": "https://github.com/remp2020/remp-commons/issues",
-                "source": "https://github.com/remp2020/remp-commons/tree/3.0.0"
+                "source": "https://github.com/remp2020/remp-commons/tree/3.1.0"
             },
             "time": "2022-09-22T11:47:27+00:00"
         },

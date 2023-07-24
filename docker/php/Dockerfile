@@ -1,4 +1,4 @@
-FROM php:8.1.14-fpm
+FROM php:8.1.21-fpm
 
 # ADD NON-ROOT USER; IF THE VARIABLES ARE NOT SET, DOCKER COMPOSE DEFAULTS TO 1000:1000 "docker"
 
@@ -24,16 +24,6 @@ RUN apt-get update && apt-get install -y ${BUILD_DEPS} ${RUN_DEPS} --no-install-
     && docker-php-ext-configure intl \
     && docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
     && docker-php-ext-install -j$(nproc) mysqli pdo_mysql bcmath iconv zip intl imap gd soap sockets
-
-# CRON
-
-COPY cron.sh /usr/local/bin/cron.sh
-
-RUN ["chmod", "+x", "/usr/local/bin/cron.sh"]
-
-COPY crontab /etc/crontab
-
-RUN ["chmod", "644", "/etc/crontab"]
 
 # OPCache
 
@@ -82,6 +72,18 @@ RUN apt-get install -y nodejs
 RUN npm install --global yarn@v2
 
 RUN mkdir -p ${YARN_CACHE_FOLDER} && chmod -R 777 ${YARN_CACHE_FOLDER}
+
+# CRON
+
+COPY cron.sh /usr/local/bin/cron.sh
+
+RUN ["chmod", "+x", "/usr/local/bin/cron.sh"]
+
+COPY crontab /etc/cron.d/mailer
+
+RUN sed -i s/__USER__/${UNAME}/g /etc/cron.d/mailer
+
+RUN ["chmod", "644", "/etc/cron.d/mailer"]
 
 # VOLUME
 

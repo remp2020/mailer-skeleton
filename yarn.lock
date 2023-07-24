@@ -5455,7 +5455,7 @@ fsevents@~2.3.2:
 
 "mailer-module@file:vendor/remp/mailer-module::locator=root-workspace-0b6124%40workspace%3A.":
   version: 2.0.0
-  resolution: "mailer-module@file:vendor/remp/mailer-module#vendor/remp/mailer-module::hash=9e5a4b&locator=root-workspace-0b6124%40workspace%3A."
+  resolution: "mailer-module@file:vendor/remp/mailer-module#vendor/remp/mailer-module::hash=ae4992&locator=root-workspace-0b6124%40workspace%3A."
   dependencies:
     "@remp/js-commons": ^2.2.0
     animate.css: ^3.7.0
@@ -5480,7 +5480,7 @@ fsevents@~2.3.2:
     lodash: ^4.17.20
     material-design-iconic-font: ^2.2.0
     moment: ^2.24.0
-    moment-timezone: "@^0.4.0 || ^0.5.0"
+    moment-timezone: ^0.4.0 || ^0.5.0
     nette-forms: ^3.1.8
     nette.ajax.js: ^2.3.0
     node-waves: ^0.7.6
@@ -5488,7 +5488,7 @@ fsevents@~2.3.2:
     salvattore: ^1.0.9
     trumbowyg: ^2.25.1
     vue: ^2.6.14
-  checksum: e3d40809a9747ed30fc26ad78982c1738da1e5e5bf6945b77f6dff269a19531d4015359ef62effc387d4925e693eb38696ad71e59429e96c2bbf26e323609ce8
+  checksum: 2de9b40d84e02cc546baebcb1f1ccea31cccc19cdd70a6267a95be4f695c314c44ebbbbbc1c8e01ed67d80154d0652b18cde9f4b52f88f2420275e207d587af9
   languageName: node
   linkType: hard
 
@@ -5840,21 +5840,21 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-moment-timezone@@^0.4.0 || ^0.5.0:
-  version: 0.5.42
-  resolution: "moment-timezone@npm:0.5.42"
-  dependencies:
-    moment: ^2.29.4
-  checksum: d34d5926a2d1e69f02c9700c2459bd3d520b3d69a2e2b4f715e052c189d9961588c72c48cb1a952689d0f2f0633843d4e04424cfee1dac20e3236f3ccc58a353
-  languageName: node
-  linkType: hard
-
 "moment-timezone@npm:^0.4.0":
   version: 0.4.1
   resolution: "moment-timezone@npm:0.4.1"
   dependencies:
     moment: ">= 2.6.0"
   checksum: 012e4db3a1510a0f31f522b8543899cc543ec7a9ea6f74c7731301364230f9c9c142f337a7ca4ce432513ee9f0a7784b20f22e42f1e61e96b4e969bbd0a002a2
+  languageName: node
+  linkType: hard
+
+"moment-timezone@npm:^0.4.0 || ^0.5.0":
+  version: 0.5.43
+  resolution: "moment-timezone@npm:0.5.43"
+  dependencies:
+    moment: ^2.29.4
+  checksum: e8719625feea5312f051c56d6735afe95d95f31b89fefc6b448485b6c4cde353fea1c5a0b1be01bc07daf5c4db981607839f702bf6b2c0ff2c2fd6fe315a3b33
   languageName: node
   linkType: hard
 
