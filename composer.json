@@ -11,7 +11,7 @@
         }
     },
     "require": {
-        "remp/mailer-module": "^3.5"
+        "remp/mailer-module": "^3.8"
     },
     "autoload": {
         "psr-4": {
