@@ -126,7 +126,7 @@ Recommended _(tested)_ versions are:
 
 #### Dependencies
 
-- PHP 8.1
+- PHP 8.2
 - MySQL 8
 - Redis 6.2
 
