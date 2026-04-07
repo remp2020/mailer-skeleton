@@ -1,4 +1,4 @@
-FROM php:8.3.20-fpm
+FROM php:8.4-fpm
 
 # ADD NON-ROOT USER; IF THE VARIABLES ARE NOT SET, DOCKER COMPOSE DEFAULTS TO 1000:1000 "docker"
 
@@ -14,7 +14,7 @@ RUN useradd -m -u ${UID} -g ${GID} -o -s /bin/bash ${UNAME}
 
 # INIT
 
-ENV BUILD_DEPS libc-client-dev libicu-dev git libzip-dev zlib1g-dev libkrb5-dev libpng-dev g++ build-essential libssl-dev libsasl2-dev libmagickwand-dev libonig-dev
+ENV BUILD_DEPS libicu-dev git libzip-dev zlib1g-dev libkrb5-dev libpng-dev g++ build-essential libssl-dev libsasl2-dev libmagickwand-dev libonig-dev
 
 ENV RUN_DEPS git wget vim curl less gnupg unzip pv cron
 
@@ -22,8 +22,7 @@ ENV RUN_DEPS git wget vim curl less gnupg unzip pv cron
 
 RUN apt-get update && apt-get install -y ${BUILD_DEPS} ${RUN_DEPS} --no-install-recommends \
     && docker-php-ext-configure intl \
-    && docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
-    && docker-php-ext-install -j$(nproc) mysqli pdo_mysql bcmath iconv zip intl imap gd soap sockets
+    && docker-php-ext-install -j$(nproc) mysqli pdo_mysql bcmath iconv zip intl gd soap sockets
 
 # OPCache
 
